@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <link rel="stylesheet" href="/styles/login.css">
+  <title>Σύνδεση</title>
+</head>
+<body>
+<div class="outer">
+  <div class="middle">
+
+    <div class="inner rounded">
+      <form action="/login" method="post">
+        <div class="gap-bottom">
+          <span><b>Σύνδεση Χρήστη</b></span>
+        </div>
+        <div  class="gap-bottom">
+          <input id="email" class="form-input account" type="text" placeholder="email" value="" name="username" autofocus>
+        </div>
+        <div class="gap-bottom">
+          <input id="password" class="form-input password" type="password" placeholder="password" value="" name="password">
+        </div>
+        <div class="gap-bottom">
+          <input type="submit" class="form-btn" value="Σύνδεση">
+        </div>
+        <div class="gap-bottom">
+          <span>Δεν έχετε λογαριασμό; Δημιουργήστε έναν </span><a href="/register">εδώ</a>
+        </div>
+      </form>
+    </div>
+    <div th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="alert rounded">
+    </div>
+  </div>
+</div>
+</body>
+</html>
