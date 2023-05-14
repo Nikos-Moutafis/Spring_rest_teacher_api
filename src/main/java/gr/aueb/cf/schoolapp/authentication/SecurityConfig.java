@@ -35,16 +35,21 @@ public class SecurityConfig {
         http.cors().and().csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
                 .and()
+//                .authorizeRequests().antMatchers("/login").hasRole("ADMIN")
                 .authorizeRequests().antMatchers("/api/teachers/**").authenticated()
+//                .and().authorizeRequests().antMatchers("/api/teachers/**").hasRole("ADMIN")
                 .anyRequest().authenticated().and().formLogin()
                 .loginPage("/login").defaultSuccessUrl("/api/teachers?lastname=").permitAll()
                 .and().httpBasic()
                 .and()
+//                .authorizeRequests().antMatchers(HttpMethod.POST,"/api/teachers").hasRole("ADMIN")
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
         return http.build();
-//                .authorizeRequests().antMatchers(HttpMethod.POST,"/api/teachers").permitAll()
+
 //                .and()
 //                .authorizeRequests().antMatchers(HttpMethod.GET,"/api/teachers").permitAll()
+//                .authorizeRequests().antMatchers(HttpMethod.POST,"/api/teachers").hasRole("ADMIN")
+
     }
 
     @Bean
